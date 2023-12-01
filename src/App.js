@@ -25,8 +25,9 @@ import PlaceOrder from "./Components/Pages/Orders/PlaceOrder";
 import Success from "./Components/Pages/PaymentStatus/Success";
 import Cancel from "./Components/Pages/PaymentStatus/Cancel";
 import "./App.scss";
-
+import axios from 'axios'
 function App() {
+  axios.defaults.withCredentials = true;
   return (
     <div>
       <ToastContainer

@@ -14,7 +14,7 @@ const CustomSidebar = ({ setSelected }) => {
 
   useEffect(() => {
     axios
-      .get(API_URL + "conversations/" + user?._id)
+      .get(API_URL + "conversations/" + user?._id) 
       .then(res => setConversations(res.data));
   }, []);
 

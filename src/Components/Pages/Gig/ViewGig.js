@@ -116,7 +116,7 @@ const ViewGig = () => {
         description: state.description,
         duration: state.duration,
         budget: state.gig.price,
-        status: STATUS.CANCELED,
+        status: STATUS.PLACED,
       };
       dispatch({ type: "ERROR", payload: false });
       dispatch({ type: "DISABLEPLACEORDER", payload: true });
@@ -145,7 +145,7 @@ const ViewGig = () => {
   return (
     <div>
       <Navbar />
-      <Dialog open={state.dialog}>
+      <Dialog open={state.dialog}> 
         <DialogTitle>Order Details</DialogTitle>
         <DialogContent>
           <DialogContentText>
@@ -312,5 +312,4 @@ const ViewGig = () => {
     </div>
   );
 };
-
 export default ViewGig;

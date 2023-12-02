@@ -7,6 +7,7 @@ import { STATUS } from "../../utils/contants";
 import { BASE_URL } from "../../utils/contants";
 import { useState } from "react";
 import axios from "axios";
+import OrderDescription from "../orderDescription";
 const currentUser = JSON.parse(localStorage.getItem("authUser"));
 const isSeller = localStorage.getItem("userType") === "seller" ? true : false;
 const Icons = {
@@ -167,20 +168,35 @@ const columns = [
   },
 ];
 const DataGridView = ({ rows }) => {
+  const [showOrderDescModal, setShowOpenDescModal] = useState(false)
+  const [orderID, setOrderID] = useState("")
+  const handlePlaceOrderClick = (helo) => {
+    setOrderID(helo.id)
+    console.log("param", helo);
+    setShowOpenDescModal(true)
+  }
+  const handleCloseOrderDetail = () => {
+    setShowOpenDescModal(false)
+  }
   return (
-    <DataGrid
-      rows={rows}
-      columns={columns}
-      pageSize={5}
-      rowsPerPageOptions={[5]}
-      disableSelectionOnClick
-      style={{
-        height: "400px",
-        justifyContent: "center",
-        textAlign: "center",
-        margin: "auto",
-      }}
-    />
+    <>
+      <DataGrid
+        rows={rows}
+        columns={columns}
+        pageSize={5}
+        rowsPerPageOptions={[5]}
+        disableSelectionOnClick
+        style={{
+          height: "400px",
+          justifyContent: "center",
+          textAlign: "center",
+          margin: "auto",
+        }}
+        onRowClick={(param) => handlePlaceOrderClick(param.row)}
+
+      />
+      <OrderDescription handlePlaceOrderClick={handlePlaceOrderClick} setShowOpenDescModal={setShowOpenDescModal} showOrderDescModal={showOrderDescModal} handleCloseOrderDetail={handleCloseOrderDetail} orderID={orderID}/>
+    </>
   );
 };
 DataGridView.defaultProps = {

@@ -1,4 +1,6 @@
-export const BASE_URL = "https://jambu-space-backend.vercel.app";
+// export const BASE_URL = "https://jambu-space-backend.vercel.app";
+export const BASE_URL = "https://jambu-space-client.onrender.com";
+// export const BASE_URL = "http://localhost:5500";
 // export const BASE_URL = "https://jambu-space-server.herokuapp.com";
 export const API_URL = BASE_URL + "/api/client/";
 

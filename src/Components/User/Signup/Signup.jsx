@@ -223,7 +223,7 @@ const SignUpPage = () => {
       <Container fluid className="bg-color-primary text-white py-4">
         <Row>
           <Col className="d-flex align-items-center justify-content-center flex-column">
-            <p className="mb-2">© 2015 - 2022 JambuSpace® Global Inc.</p>
+            <p className="mb-2">© 2015 - 2023 SkillSync® Global Inc.</p>
             <div className="footer-content text-center">
               <p className="mb-0">
                 <a className="text-white" href="/">

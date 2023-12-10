@@ -43,7 +43,7 @@ const JobsPage = () => {
           <Col md={9}>
             <h2 className="color-primary font-rebrand fw-bold m-0">Jobs</h2>
             <p className="my-4 font-18 text-muted">
-              Here are some jambu-space jobs for you. Lets pick one!!!
+              Here are some Skill-Sync jobs for you. Lets pick one!!!
             </p>
 
             <h5 className="m-0 mb-1">Top Projects you may like</h5>

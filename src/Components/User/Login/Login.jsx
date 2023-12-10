@@ -101,7 +101,7 @@ const LoginPage = () => {
           <Row className="form-footer border-top">
             <Col className="my-4 text-center d-flex flex-column justify-content-center align-items-center">
               <p className="mb-0 account-text d-inline-block">
-                Don't have an JambuSpace account?
+                Don't have an SkillSync account?
               </p>
               <Link to="/signup" className="text-decoration-none ">
                 <CustomButton
@@ -118,7 +118,7 @@ const LoginPage = () => {
       <Container fluid className="bg-color-primary text-white py-4">
         <Row>
           <Col className="d-flex align-items-center justify-content-center flex-column">
-            <p className="mb-2">© 2015 - 2022 JambuSpace® Global Inc.</p>
+            <p className="mb-2">© 2015 - 2023 SkillSync® Global Inc.</p>
             <div className="footer-content text-center">
               <p className="mb-0">
                 <a className="text-white" href="/">

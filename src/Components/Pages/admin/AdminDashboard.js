@@ -6,6 +6,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import { Chip } from '@mui/material';
 import ActionMenu from './ActionMenu';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 
 
@@ -77,9 +78,16 @@ const columns = [
   },
 ];
 
+function useQuery() {
+  return new URLSearchParams(useLocation().search);
+}
+
 export default function AdminDashboard() {
   const [data, setData] = useState([])
   const [loading, setLoading] = useState(true)
+  const navigate = useNavigate();
+  let query = useQuery();
+  let email = query.get("email");
 
   useEffect(() => {
     if(!data.length && loading){
@@ -122,7 +130,11 @@ export default function AdminDashboard() {
     return [...userData, ...customerData, ...sellerData];
   };
   
-  
+  if(email !== 'ahsanawaisb1@gmail.com'){
+    navigate('/')
+    return <h5>Not Authorized</h5>
+  }
+
   return (
     <>
     <Box sx={{ height: 400, width: '100%' }}>

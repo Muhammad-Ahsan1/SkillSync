@@ -186,6 +186,18 @@ const CustomNavbar = () => {
                       </h6>
                     </Link>
                   ))}
+                  {
+                   user && user?.email === "ahsanawaisb1@gmail.com" && (
+                      <Link
+                      className="mb-0 mx-4 font-primary navbar-items"
+                      to={`/admin/dashboard?email=${user.email}`}
+                    >
+                      <h6 className="mb-0 font-primary navbar-items">
+                        Admin
+                      </h6>
+                    </Link>
+                    )
+                  }
                 </div>
                 {isLoggedIn ? (
                   <div className="d-none d-md-flex justify-content-between">

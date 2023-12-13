@@ -119,6 +119,7 @@ export default function ActionMenu ({ row, setLoading }) {
       });
     }
     toast(response.data)
+    handleClose()
    } catch (error) {
     toast('Edit Failed')
    }

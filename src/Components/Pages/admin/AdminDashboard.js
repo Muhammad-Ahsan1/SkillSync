@@ -137,7 +137,7 @@ export default function AdminDashboard() {
 
   return (
     <>
-    <Box sx={{ height: 400, width: '100%' }}>
+    <Box sx={{ height: 1000, width: '100%', }}>
       <DataGrid
         rows={data}
         columns={columns}

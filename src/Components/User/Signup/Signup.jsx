@@ -157,22 +157,26 @@ const SignUpPage = () => {
                   prefix={<FaBuilding className="me-3" />}
                 />
 
-                <Select
-                  placeholder="Select Country"
-                  className="w-100 color-grey py-2 my-2 d-flex text-start"
-                  onChange={(selected) =>
-                    setFormData((prevState) => ({
-                      ...prevState,
-                      country: selected,
-                    }))
-                  }
-                >
-                  {countries.map((item) => (
-                    <Option key={item.code} value={item.name}>
-                      {item.name}
-                    </Option>
-                  ))}
-                </Select>
+<Select
+  showSearch
+  placeholder="Select Country"
+  className="w-100 color-grey py-2 my-2 d-flex text-start"
+  onChange={(selected) =>
+    setFormData((prevState) => ({
+      ...prevState,
+      country: selected,
+    }))
+  }
+  filterOption={(input, option) =>
+    option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+  }
+>
+  {countries.map((item) => (
+    <Option key={item.code} value={item.name}>
+      {item.name}
+    </Option>
+  ))}
+</Select>
 
                 <Radio.Group
                   className="color-grey my-2 d-flex"

@@ -51,7 +51,7 @@ const LoginPage = () => {
           <Row className="justify-content-center text-center pb-5">
             <Col className="px-5">
               <div className="form-header py-2 my-3 mt-4">
-                <h4>Login to JamboSpace</h4>
+                <h4>Login to Skill Sync</h4>
               </div>
 
               <div className="px-4 form-wrapper">

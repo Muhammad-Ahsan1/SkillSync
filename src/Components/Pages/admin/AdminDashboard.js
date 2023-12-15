@@ -7,6 +7,8 @@ import axios from 'axios';
 import { Chip } from '@mui/material';
 import ActionMenu from './ActionMenu';
 import { useLocation, useNavigate } from 'react-router-dom';
+import CustomButton from '../../Common/Button/CustomButton';
+import { Col, Container, Row } from 'react-bootstrap';
 
 
 
@@ -78,16 +80,12 @@ const columns = [
   },
 ];
 
-function useQuery() {
-  return new URLSearchParams(useLocation().search);
-}
 
 export default function AdminDashboard() {
   const [data, setData] = useState([])
   const [loading, setLoading] = useState(true)
   const navigate = useNavigate();
-  let query = useQuery();
-  let email = query.get("email");
+  const localStorageAdminAuth = localStorage.getItem("adminAuth")
 
   useEffect(() => {
     if(!data.length && loading){
@@ -130,13 +128,30 @@ export default function AdminDashboard() {
     return [...userData, ...customerData, ...sellerData];
   };
   
-  if(email !== 'ahsanawaisb1@gmail.com'){
-    navigate('/')
-    return <h5>Not Authorized</h5>
+  if(!localStorageAdminAuth){
+    navigate('/admin/login')
+    return(
+      <div style={{display:"flex", width:"100%",height:"100vh", justifyContent:"center",alignItems:"center"}}>
+        <h5>Not Authorized</h5>
+      </div>
+    )
   }
 
   return (
     <>
+   <div style={{display:"flex", width:"100%", justifyContent:"flex-end", marginBottom:"25px", boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)",}}>
+   <CustomButton
+          classes="my-2"
+          type="secondary"
+          values="Logout"
+          variant="outlined"
+          onClick={() =>{
+            localStorage.removeItem("adminAuth")
+            navigate('/admin/login')
+          }}
+          maxWidth="120px"
+        />
+   </div>
     <Box sx={{ height: 1000, width: '100%', }}>
       <DataGrid
         rows={data}

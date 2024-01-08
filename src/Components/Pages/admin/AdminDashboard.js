@@ -12,73 +12,6 @@ import { Col, Container, Row } from 'react-bootstrap';
 
 
 
-const columns = [
-  { field: 'id', headerName: 'ID', width: 180 },
-  {
-    field: 'username',
-    headerName: 'Username',
-    width: 120,
-  },
-  {
-    field: 'fullName',
-    headerName: 'FullName',
-    width: 120,
-  },
-  {
-    field: 'email',
-    headerName: 'Email',
-    width: 150,
-  },
-  {
-    field: 'phone',
-    headerName: 'Phone',
-    width: 180,
-  },
-  {
-    field: 'company',
-    headerName: 'Company',
-    width: 180,
-  },
-  {
-    field: 'country',
-    headerName: 'Country',
-    width: 180,
-  },
-  {
-    field: 'jobs',
-    headerName: 'Jobs',
-    type: 'number',
-    width: 110,
-    renderCell: (params) => (
-      params.row.jobs.length ? <Chip label={params.row.jobs.length} color="success" /> : <Chip label={0} color="error" />
-    ),
-  },
-  {
-    field: 'skills',
-    headerName: 'Skills',
-    type: 'number',
-    width: 110,
-    renderCell: (params) => (
-      params.row.skills && params.row.skills.length ? <Chip label={params.row.skills.length} color="success" /> : <Chip label={0} color="error" />
-    ),
-  },
-  {
-    field: 'role',
-    headerName: 'Role',
-    width: 160,
-    renderCell: (params) => (
-      <Chip label={params.row.role} color="success" />
-    ),
-  },
-  {
-    field: 'action',
-    headerName: 'Action',
-    width: 160,
-    renderCell: (params) => (
-      <ActionMenu row={params.row} />
-    ),
-  },
-];
 
 
 export default function AdminDashboard() {
@@ -86,7 +19,74 @@ export default function AdminDashboard() {
   const [loading, setLoading] = useState(true)
   const navigate = useNavigate();
   const localStorageAdminAuth = localStorage.getItem("adminAuth")
-
+  const columns = [
+    { field: 'id', headerName: 'ID', width: 180 },
+    {
+      field: 'username',
+      headerName: 'Username',
+      width: 120,
+    },
+    {
+      field: 'fullName',
+      headerName: 'FullName',
+      width: 120,
+    },
+    {
+      field: 'email',
+      headerName: 'Email',
+      width: 150,
+    },
+    {
+      field: 'phone',
+      headerName: 'Phone',
+      width: 180,
+    },
+    {
+      field: 'company',
+      headerName: 'Company',
+      width: 180,
+    },
+    {
+      field: 'country',
+      headerName: 'Country',
+      width: 180,
+    },
+    {
+      field: 'jobs',
+      headerName: 'Jobs',
+      type: 'number',
+      width: 110,
+      renderCell: (params) => (
+        params.row.jobs.length ? <Chip label={params.row.jobs.length} color="success" /> : <Chip label={0} color="error" />
+      ),
+    },
+    {
+      field: 'skills',
+      headerName: 'Skills',
+      type: 'number',
+      width: 110,
+      renderCell: (params) => (
+        params.row.skills && params.row.skills.length ? <Chip label={params.row.skills.length} color="success" /> : <Chip label={0} color="error" />
+      ),
+    },
+    {
+      field: 'role',
+      headerName: 'Role',
+      width: 160,
+      renderCell: (params) => (
+        <Chip label={params.row.role} color="success" />
+      ),
+    },
+    {
+      field: 'action',
+      headerName: 'Action',
+      width: 160,
+      renderCell: (params) => (
+        <ActionMenu row={params.row} setData={setData} />
+      ),
+    },
+  ];
+  
   useEffect(() => {
     if(!data.length && loading){
       getAllUsers()

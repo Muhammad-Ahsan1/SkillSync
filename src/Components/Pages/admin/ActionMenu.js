@@ -10,7 +10,7 @@ import { toast } from "react-toastify";
 const Transition = forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
-export default function ActionMenu ({ row, setLoading }) {
+export default function ActionMenu ({ row, setData}) {
   const [anchorEl, setAnchorEl] = useState(null);
   const [open, setOpen] =useState(false);
   const [formData, setFormData] = useState({
@@ -62,6 +62,7 @@ export default function ActionMenu ({ row, setLoading }) {
     }else if(row.role === 'USER'){
       response =await axios.get(`http://localhost:5500/api/admin/deleteUser/${row.id}`)
     }
+    setData((prevData) => prevData.filter((user) => user.id !== row.id));
     toast(response.data)
     handleMenuClose();
     } catch (error) {
@@ -71,7 +72,7 @@ export default function ActionMenu ({ row, setLoading }) {
 console.log('🔥🍊🍉 row',row);
   const handleSaveEditModal = async() => {
    try {
-    let dataToSend;
+    let dataToSend = { ...formData };
     if(formData.company){
       dataToSend = {
         company: formData.company
@@ -122,6 +123,11 @@ console.log('🔥🍊🍉 row',row);
         },
       });
     }
+    setData((prevData) =>
+    prevData.map((user) =>
+      user.id === row.id ? { ...user, ...formData } : user
+    )
+  );
     toast(response.data)
     handleClose()
    } catch (error) {

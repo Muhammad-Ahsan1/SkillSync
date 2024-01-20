@@ -52,7 +52,7 @@ const CustomFooter = () => {
                         className="d-flex justify-content-center px-2 my-2"
                     >
                         <p className="mb-0 text-white footer-text">
-                            © 2015 - 2022 SkillSync® Global Inc.
+                            © 2015 - 2024 SkillSync® Global Inc.
                         </p>
                     </Col>
 

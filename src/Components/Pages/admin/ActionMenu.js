@@ -5,6 +5,7 @@ import { forwardRef, useState } from "react";
 import { FaBuilding, FaPhone, FaUser, FaUserAlt } from "react-icons/fa";
 import { IoMdMail } from "react-icons/io";
 import { toast } from "react-toastify";
+import { BASE_URL } from "../../utils/contants";
 
 
 const Transition = forwardRef(function Transition(props, ref) {
@@ -56,11 +57,11 @@ export default function ActionMenu ({ row, setData}) {
     try {
       let response;
     if(row.role === 'SELLER'){
-      response = await axios.get(`http://localhost:5500/api/admin/deleteSeller/${row.id}`)
+      response = await axios.get(`${BASE_URL}api/admin/deleteSeller/${row.id}`)
     }else if(row.role === 'CUSTOMER'){
-      response =await axios.get(`http://localhost:5500/api/admin/deleteCustomer/${row.id}`)
+      response =await axios.get(`${BASE_URL}api/admin/deleteCustomer/${row.id}`)
     }else if(row.role === 'USER'){
-      response =await axios.get(`http://localhost:5500/api/admin/deleteUser/${row.id}`)
+      response =await axios.get(`${BASE_URL}api/admin/deleteUser/${row.id}`)
     }
     setData((prevData) => prevData.filter((user) => user.id !== row.id));
     toast(response.data)
@@ -105,19 +106,19 @@ console.log('🔥🍊🍉 row',row);
 
     let response;
     if(row.role === 'SELLER'){
-      response = await axios.post(`http://localhost:5500/api/admin/editSeller/${row.id}`,dataToSend,{
+      response = await axios.post(`${BASE_URL}api/admin/editSeller/${row.id}`,dataToSend,{
         headers: {
           "Content-Type": "application/json",
         },
       })
     }else if(row.role === 'CUSTOMER'){
-      response = await axios.post(`http://localhost:5500/api/admin/editCustomer/${row.id}`, dataToSend,{
+      response = await axios.post(`${BASE_URL}api/admin/editCustomer/${row.id}`, dataToSend,{
         headers: {
           "Content-Type": "application/json",
         },
       })
     } else if (row.role === "USER") {
-      response = await axios.post(`http://localhost:5500/api/admin/editUser/${row.id}`,dataToSend,{
+      response = await axios.post(`${BASE_URL}api/admin/editUser/${row.id}`,dataToSend,{
         headers: {
           "Content-Type": "application/json",
         },

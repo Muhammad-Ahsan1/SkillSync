@@ -8,6 +8,7 @@ import { useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
+import { BASE_URL } from '../../utils/contants'
 
 export default function AdminLoginPage() {
   const navigate = useNavigate();
@@ -25,7 +26,7 @@ export default function AdminLoginPage() {
 
     if (!anyInvalidField) {
       axios
-        .post('http://localhost:5500/api/admin/login', formData)
+        .post(`${BASE_URL}api/admin/login`, formData)
         .then((res) => {
           if(res.status === 200){
             localStorage.setItem("adminAuth", res.data);

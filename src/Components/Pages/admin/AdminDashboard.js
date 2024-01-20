@@ -9,6 +9,7 @@ import ActionMenu from './ActionMenu';
 import { useLocation, useNavigate } from 'react-router-dom';
 import CustomButton from '../../Common/Button/CustomButton';
 import { Col, Container, Row } from 'react-bootstrap';
+import { BASE_URL } from '../../utils/contants';
 
 
 
@@ -97,9 +98,9 @@ export default function AdminDashboard() {
   const getAllUsers = async() => {
   try {
     
-    const response1 = await axios.get('http://localhost:5500/api/admin/getAllUsers')
-    const response2 = await axios.get('http://localhost:5500/api/admin/getAllCustomers')
-    const response3 = await axios.get('http://localhost:5500/api/admin/getAllSellers')
+    const response1 = await axios.get(`${BASE_URL}api/admin/getAllUsers`)
+    const response2 = await axios.get(`${BASE_URL}api/admin/getAllCustomers`)
+    const response3 = await axios.get(`${BASE_URL}api/admin/getAllSellers`)
    await Promise.all([response1, response2, response3]).then((values) => {
      const result = combineData(values[0].data, values[1].data, values[2].data);
      setData(result)

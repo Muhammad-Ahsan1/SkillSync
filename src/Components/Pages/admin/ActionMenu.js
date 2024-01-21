@@ -57,11 +57,11 @@ export default function ActionMenu ({ row, setData}) {
     try {
       let response;
     if(row.role === 'SELLER'){
-      response = await axios.get(`${BASE_URL}api/admin/deleteSeller/${row.id}`)
+      response = await axios.get(`${BASE_URL}/api/admin/deleteSeller/${row.id}`)
     }else if(row.role === 'CUSTOMER'){
-      response =await axios.get(`${BASE_URL}api/admin/deleteCustomer/${row.id}`)
+      response =await axios.get(`${BASE_URL}/api/admin/deleteCustomer/${row.id}`)
     }else if(row.role === 'USER'){
-      response =await axios.get(`${BASE_URL}api/admin/deleteUser/${row.id}`)
+      response =await axios.get(`${BASE_URL}/api/admin/deleteUser/${row.id}`)
     }
     setData((prevData) => prevData.filter((user) => user.id !== row.id));
     toast(response.data)
@@ -106,19 +106,19 @@ console.log('🔥🍊🍉 row',row);
 
     let response;
     if(row.role === 'SELLER'){
-      response = await axios.post(`${BASE_URL}api/admin/editSeller/${row.id}`,dataToSend,{
+      response = await axios.post(`${BASE_URL}/api/admin/editSeller/${row.id}`,dataToSend,{
         headers: {
           "Content-Type": "application/json",
         },
       })
     }else if(row.role === 'CUSTOMER'){
-      response = await axios.post(`${BASE_URL}api/admin/editCustomer/${row.id}`, dataToSend,{
+      response = await axios.post(`${BASE_URL}/api/admin/editCustomer/${row.id}`, dataToSend,{
         headers: {
           "Content-Type": "application/json",
         },
       })
     } else if (row.role === "USER") {
-      response = await axios.post(`${BASE_URL}api/admin/editUser/${row.id}`,dataToSend,{
+      response = await axios.post(`${BASE_URL}/api/admin/editUser/${row.id}`,dataToSend,{
         headers: {
           "Content-Type": "application/json",
         },

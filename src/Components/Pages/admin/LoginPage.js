@@ -19,14 +19,17 @@ export default function AdminLoginPage() {
   });
 
   const handleSubmit = () => {
+    console.log("Hellowwww")
     // Check Validation
     const emptyFields = Object.keys(formData).filter((key) => !formData[key]);
     const anyInvalidField = emptyFields.length > 0 ? true : false;
     if (anyInvalidField) toast.error(`${emptyFields[0]} is required`);
-
+    
     if (!anyInvalidField) {
+      console.log("`Haan",`${BASE_URL}/api/admin/login`)
+      console.log("Hellowwww")
       axios
-        .post(`${BASE_URL}api/admin/login`, formData)
+        .post(`${BASE_URL}/api/admin/login`, formData)
         .then((res) => {
           if(res.status === 200){
             localStorage.setItem("adminAuth", res.data);
